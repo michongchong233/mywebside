@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Michongchong_Gallery</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/gallery_desktop.css">
+    <link rel="stylesheet" href="css/gallery_phone.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/jquery.fancybox-thumbs.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+    <script src="jquery/jquery.fancybox.pack.js"></script>
+    <script src="jquery/jquery.fancybox-thumbs.js"></script>
+    <script>
+        $(document).ready(function () {
+            //
+            //            //在每個框加<span>，hover使用
+            //            $('.box_img a img').after('<span></span>');
+
+            //抓container寬度(浮動)
+            var containerWidth = $(window).width()
+            console.log(containerWidth);
+            //交界寬度重加載
+            $(window).resize(function () {
+                var containerWidth = $(window).width()
+                console.log(containerWidth);
+                //                if (containerWidth == 600){
+                //                    window.location.reload();
+                //                }else if(containerWidth == 599){
+                //                    window.location.reload();
+                //                };
+            });
+
+
+            //            //電腦寬度再換行
+            //            if (containerWidth => 600) {
+            //                $('.nav ul li .fa').after('<br>');
+            //            };
+
+            //手風琴菜單
+            $('.imgbutton').click(function () {
+                $(this).next().slideToggle('slow');
+            });
+            //瀑布流
+            $('.imgbutton').next().imagesLoaded(function () {
+                $('.imgbutton').next().masonry({
+                    isFitWidth: false,
+                    originTop: false,
+                    originLeft: false,
+                });
+                //            打開只顯示最新的一年
+                $('.imgbutton').next().hide();
+                $('.imgbutton:nth-of-type(1)').next().show();
+            });
+
+            //            $('.imgbutton').next().hide();
+            //            $('.imgbutton:nth-of-type(1)').next().show();
+
+            //fancybox
+            if (containerWidth < 600) {
+                $('.fancy_img').fancybox({
+                    padding: 0,
+                    helpers: {
+                        overlay: {
+                            css: {
+                                background: "rgba(33, 29, 26, .7)"
+                            }
+                        },
+                    },
+                });
+            } else {
+                $('.fancy_img').fancybox({
+                    padding: 0,
+                    helpers: {
+                        thumbs: {
+                            width: 50,
+                            height: 100,
+                        },
+                        overlay: {
+                            css: {
+                                background: "rgba(33, 29, 26, .7)"
+                            }
+                        },
+                    },
+                });
+            };
+
+
+
+
+            //加載完淡入
+            $('.blackfadein').fadeOut(400);
+
+            // 菜單摸到位移
+            $('.nav').hover(function () {
+                if (containerWidth < 600) {
+
+                } else {
+                    $('.nav').stop().animate({
+                        left: 0,
+                    }, 700);
+                    $('.box_img img').stop().animate({
+                        left: 0,
+                    }, 700);
+                }
+            }, function () {
+                if (containerWidth < 600) {
+
+                } else {
+                    $('.nav').stop().animate({
+                        left: -295,
+                    }, 700);
+                    $('.box_img img').stop().animate({
+                        left: -50,
+                    }, 700);
+                }
+            });
+
+            //摸到.box_img圖片位移
+            $('.box_img a').hover(function () {
+                $(this).contents('img').stop().animate({
+                    left: 0,
+                }, 700);
+            }, function () {
+                $(this).contents('img').stop().animate({
+                    left: -50,
+                }, 700);
+            });
+
+            //            漢堡菜單
+            $('.burger').click(function () {
+                $(this).toggleClass('burger_x');
+                $(this).next().stop().slideToggle('nav');
+            });
+            $(window).resize(function () {
+                var w = $(window).width();
+                console.log(w);
+                if (w > 600) {
+                    $('.nav').show();
+                } else {
+                    $('.nav').hide();
+                    $('.burger').removeClass('burger_x');
+                };
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="blackfadein"></div>
+    <nav>
+        <div class="burger clearfix">
+            <span></span>
+        </div>
+        <div class="nav">
+            <ul>
+                <li>
+                    <div class="myname_wapper">
+                        <div class="myhead"></div>
+                        <a class="myname" href="index.html">Mickey</a>
+                    </div>
+                </li>
+                <li class="menu">
+                    <a href="gallery.html">
+                        <span class="fa fa-pencil fa-1x"></span> DESIGN
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="blog.html">
+                        <span class="fa fa-calendar fa-1x"></span> BLOG
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="archive.html">
+                        <span class="fa fa-bookmark fa-1x"></span> ARCHIVE
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="http://www.weibo.com/1540808830" target="_blank">
+                        <span class="fa fa-weibo fa-1x"></span> WEIBO
+                    </a>
+                </li>
+            </ul>
+            <div class="bookme clearfix">
+                <a href="#"><span class="fa fa-share-alt fa-1x"></span></a>
+                <a href="#"><span class="fa fa-facebook-square fa-1x"></span></a>
+                <a href="#"><span class="fa fa-twitter fa-1x"></span></a>
+                <a href="#"><span class="fa fa-weibo fa-1x"></span></a>
+                <a href="mailto:a81080745@yahoo.com?subject=主旨內容&cc=1148177836@qq.com&bcc=a81080745@sina.com&body=姓名:  %0d%0d電話:  %0d%0d地址:  %0d"><span class="fa fa-envelope fa-1x"></span></a>
+            </div>
+        </div>
+    </nav>
+    <div class="all_box">
+        <div class="imgbutton">
+            <p>2017</p>
+        </div>
+        <div class="container_2017">
+            <div class="box_img">
+                <a href="http://i.imgur.com/BfaA019.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/zlpTFiQ.jpg" alt="">
+                    <span><p>20170103</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/wvqiYks.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/YMhT3LJ.jpg" alt="">
+                    <span><p>20170111</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/VRDJEfA.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/ds0ucLD.jpg" alt="">
+                    <span><p>20170118</p></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="imgbutton">
+            <p>2016</p>
+        </div>
+        <div class="container_2016">
+            <div class="box_img">
+                <a href="http://i.imgur.com/lUNkTW2.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/32BlXze.jpg" alt="">
+                    <span><p>20160302</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/qQ218no.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/0TpmoVU.jpg" alt="">
+                    <span><p>20160303</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/Um9Oihl.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/GgFx0wL.jpg" alt="">
+                    <span><p>20160306</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/Slpzcmi.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/rhJNage.jpg" alt="">
+                    <span><p>20160314</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/qMI6z9G.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/l9zLoJj.jpg" alt="">
+                    <span><p>20160314</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/yldEe2U.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/NKDqD1k.jpg" alt="">
+                    <span><p>20160314</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/Dst3aDx.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/9kW0A3V.jpg" alt="">
+                    <span><p>20160314</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/cT287id.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/npc5y0o.jpg" alt="">
+                    <span><p>20160905</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/WjvetLY.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/zPYsEg0.jpg" alt="">
+                    <span><p>20160911</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/kh9xCcK.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/IpYch1Z.jpg" alt="">
+                    <span><p>20161003</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/D2bYyAP.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/QlfWNc4.jpg" alt="">
+                    <span><p>20161026</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/DXN3wSW.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/iXTpaRO.jpg" alt="">
+                    <span><p>20161124</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/wvz7A2O.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/AMItFVK.jpg" alt="">
+                    <span><p>20161124</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="webdesign/20161209/index.html" target="_blank"><img src="http://i.imgur.com/GwUZxf7.jpg" alt="">
+                    <span><p>20161124</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/Us6ahsi.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/1vQbPAP.jpg" alt="">
+                    <span><p>20161213</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/eOo0Epc.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/mzdHLT6.jpg" alt="">
+                    <span><p>20161227</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/WoviEez.jpg" class="fancy_img" rel="design"><img src="http://i.imgur.com/KGGB8q4.jpg" alt="">
+                    <span><p>20161229</p></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="imgbutton">
+            <p>2015</p>
+        </div>
+        <div class="container_2015">
+            <div class="box_img">
+                <a href="http://i.imgur.com/nr2Ug67.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/6x38RiO.jpg" alt="">
+                    <span><p>20150613</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/eYaNKtO.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/kH38CyA.jpg" alt="">
+                    <span><p>20150618</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/DwVLsRe.jpg" class="fancy_img" rel="watercolor"><img src="http://i.imgur.com/Yr7KtB7.jpg" alt="">
+                    <span><p>20150812</p></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="imgbutton">
+            <p>2014</p>
+        </div>
+        <div class="container_2014">
+            <div class="box_img">
+                <a href="http://i.imgur.com/KwibrIN.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/KpCS2kn.jpg" alt="">
+                    <span><p>20140314</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/Dr1F4qv.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/ownaxmp.jpg" alt="">
+                    <span><p>20140404</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/CCWW6VM.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/eSVf5ed.jpg" alt="">
+                    <span><p>20140608</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/dWyLxhU.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/fTXKOUG.jpg" alt="">
+                    <span><p>20140613</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/q3L240P.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/bdEnLzJ.jpg" alt="">
+                    <span><p>20140721</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/wc6JDSI.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/qSaBp3F.jpg" alt="">
+                    <span><p>20140814</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/5DK0UVz.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/MwADSgr.jpg" alt="">
+                    <span><p>20140827</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/PXs43px.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/07iKwJv.jpg" alt="">
+                    <span><p>20140929</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/XOTRGix.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/hQVFenQ.jpg" alt="">
+                    <span><p>20141030</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/Al3OIxb.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/V9qEAOI.jpg" alt="">
+                    <span><p>20141031</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/z0J1t1N.jpg" class="fancy_img" rel="SAI"><img src="http://i.imgur.com/csYmFr4.jpg" alt="">
+                    <span><p>20141112</p></span>
+                </a>
+            </div>
+            <div class="box_img">
+                <a href="http://i.imgur.com/vpsGHYj.png" class="fancy_img" rel="design"><img src="http://i.imgur.com/7NUAEML.png" alt="">
+                    <span><p>20141122</p></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

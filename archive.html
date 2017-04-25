@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Michongchong_Archive</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //            抓container寬度(浮動)
+            //            var containerWidth = $(window).width()
+            //            console.log(containerWidth);
+            //            $(window).resize(function () {
+            //                var containerWidth = $(window).width()
+            //                console.log(containerWidth);
+            //                $('.container').width(containerWidth - 35);
+            //            });
+
+            // 菜單摸到位移
+            $('.nav').hover(function () {
+                $('.nav').stop().animate({
+                    left: 0,
+                }, 700);
+                //                $('.container').stop().animate({
+                //                    left: 295,
+                //                }, 700);
+            }, function () {
+                $('.nav').stop().animate({
+                    left: -295,
+                }, 700);
+                //                $('.container').stop().animate({
+                //                    left: 0,
+                //                }, 700);
+            });
+
+            //            漢堡菜單
+            $('.burger').click(function () {
+                $(this).toggleClass('burger_x');
+                $(this).next().stop().slideToggle('nav');
+            });
+            $(window).resize(function () {
+                var w = $(window).width();
+                console.log(w);
+                if (w > 600) {
+                    $('.nav').show();
+                } else {
+                    $('.nav').hide();
+                    $('.burger').removeClass('burger_x');
+                };
+            });
+
+            //加載完淡入
+            $('.blackfadein').fadeOut(400);
+        });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="burger clearfix">
+            <span></span>
+        </div>
+        <div class="nav">
+            <ul>
+                <li>
+                    <div class="myname_wapper">
+                        <div class="myhead"></div>
+                        <a class="myname" href="index.html">Mickey</a>
+                    </div>
+                </li>
+                <li class="menu">
+                    <a href="gallery.html">
+                        <span class="fa fa-pencil fa-1x"></span> DESIGN
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="blog.html">
+                        <span class="fa fa-calendar fa-1x"></span> BLOG
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="archive.html">
+                        <span class="fa fa-bookmark fa-1x"></span> ARCHIVE
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="http://www.weibo.com/1540808830" target="_blank">
+                        <span class="fa fa-weibo fa-1x"></span> WEIBO
+                    </a>
+                </li>
+            </ul>
+            <div class="bookme clearfix">
+                <a href="#"><span class="fa fa-share-alt fa-1x"></span></a>
+                <a href="#"><span class="fa fa-facebook-square fa-1x"></span></a>
+                <a href="#"><span class="fa fa-twitter fa-1x"></span></a>
+                <a href="#"><span class="fa fa-weibo fa-1x"></span></a>
+                <a href="mailto:a81080745@yahoo.com?subject=主旨內容&cc=1148177836@qq.com&bcc=a81080745@sina.com&body=姓名:  %0d%0d電話:  %0d%0d地址:  %0d"><span class="fa fa-envelope fa-1x"></span></a>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

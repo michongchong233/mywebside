@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Michongchong_Blog</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/blog_desktop.css">
+    <link rel="stylesheet" href="css/blog_phone.css">
+    <style>
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //            抓container寬度(浮動)
+            //            var containerWidth = $(window).width()
+            //            console.log(containerWidth);
+            //            $(window).resize(function () {
+            //                var containerWidth = $(window).width()
+            //                console.log(containerWidth);
+            //                $('.container').width(containerWidth - 35);
+            //            });
+            //抓container寬度(浮動)
+            var containerWidth = $(window).width()
+            console.log(containerWidth);
+            //交界寬度重加載
+            $(window).resize(function () {
+                var containerWidth = $(window).width()
+                console.log(containerWidth);
+            });
+            // 菜單摸到位移
+            $('.nav').hover(function () {
+                var containerWidth = $(window).width()
+                if (containerWidth < 600) {
+
+                } else {
+                    $('.nav').stop().animate({
+                        left: 0,
+                    }, 700);
+                    $('.container').stop().animate({
+                        left: 250,
+                    }, 700);
+                }
+            }, function () {
+                var containerWidth = $(window).width()
+                if (containerWidth < 600) {
+
+                } else {
+                    $('.nav').stop().animate({
+                        left: -295,
+                    }, 700);
+                    $('.container').stop().animate({
+                        left: 0,
+                    }, 700);
+                }
+            });
+            //            // 菜單摸到位移
+            //            $('.nav').hover(function () {
+            //                $('.nav').stop().animate({
+            //                    left: 0,
+            //                }, 700);
+            //                $('.container').stop().animate({
+            //                    left: 295,
+            //                }, 700);
+            //            }, function () {
+            //                $('.nav').stop().animate({
+            //                    left: -295,
+            //                }, 700);
+            //                $('.container').stop().animate({
+            //                    left: 0,
+            //                }, 700);
+            //            });
+
+            //            漢堡菜單
+            $('.burger').click(function () {
+                $(this).toggleClass('burger_x');
+                $(this).next().stop().slideToggle('nav');
+            });
+            $(window).resize(function () {
+                var w = $(window).width();
+                console.log(w);
+                if (w > 600) {
+                    $('.nav').show();
+                } else {
+                    $('.nav').hide();
+                    $('.burger').removeClass('burger_x');
+                };
+            });
+
+            //加載完淡入
+            $('.blackfadein').fadeOut(400);
+        });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="burger clearfix">
+            <span></span>
+        </div>
+        <div class="nav">
+            <ul>
+                <li>
+                    <div class="myname_wapper">
+                        <div class="myhead"></div>
+                        <a class="myname" href="index.html">Mickey</a>
+                    </div>
+                </li>
+                <li class="menu">
+                    <a href="gallery.html">
+                        <span class="fa fa-pencil fa-1x"></span> DESIGN
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="blog.html">
+                        <span class="fa fa-calendar fa-1x"></span> BLOG
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="archive.html">
+                        <span class="fa fa-bookmark fa-1x"></span> ARCHIVE
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="http://www.weibo.com/1540808830" target="_blank">
+                        <span class="fa fa-weibo fa-1x"></span> WEIBO
+                    </a>
+                </li>
+            </ul>
+            <div class="bookme clearfix">
+                <a href="#"><span class="fa fa-share-alt fa-1x"></span></a>
+                <a href="#"><span class="fa fa-facebook-square fa-1x"></span></a>
+                <a href="#"><span class="fa fa-twitter fa-1x"></span></a>
+                <a href="#"><span class="fa fa-weibo fa-1x"></span></a>
+                <a href="mailto:a81080745@yahoo.com?subject=主旨內容&cc=1148177836@qq.com&bcc=a81080745@sina.com&body=姓名:  %0d%0d電話:  %0d%0d地址:  %0d"><span class="fa fa-envelope fa-1x"></span></a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="blackfadein"></div>
+        <div class="daily clearfix">
+            <div class="article date-20170120 ">
+                <div class="article_img date-20170120">
+                    <img src="https://s-media-cache-ak0.pinimg.com/564x/e2/f1/f9/e2f1f94c1897182f57522c6ae9adb61b.jpg" alt="">
+                </div>
+                <h2>视觉日记</h2>
+                <h3>2017-01-20</h3>
+                <p>排版设计原则不外乎就是Repetition/重复，Contrast/对比，Alignment/排列，Proximity/亲近等，再配上Typeface/字体和Image/图像的选用，如果想让版式更加精致且不出错，就再运用上网格来辅助检查。</p>
+                <ul>
+                    <li>海报的核心是Idea+Story</li>
+                    <li>高水准海报是内容与创意为先，美感与效果居其二；</li>
+                    <li>设计原则和技巧只是用于讲故事的方法；</li>
+                    <li>设计师的区隔力是自身的经历和经验累加；</li>
+                    <li>养成记录创意的习惯；</li>
+                    <li>坚持视觉日记训练是锻炼设计能力的好方法。</li>
+                </ul>
+            </div>
+        </div>
+        <div class="daily  clearfix">
+            <div class="article date-20170120">
+                <div class="article_img date-20170120">
+                    <img src="https://s-media-cache-ak0.pinimg.com/564x/c1/98/db/c198dbdacebd77ca2258df151e358a09.jpg" alt="">
+                </div>
+                <h2>设计作品中的“廉价感”是如何产生的？</h2>
+                <h3>2017-01-20</h3>
+                <p>什么是贵，什么是廉价？这个感受虽然是根据每个人的生活经历以及见识所决定。但同时，更是被一种常规的社会认知而决定的。高档与廉价的感觉是通过和同品类的比较，以及和我们心智中对于事物认知的对比而得来的。</p>
+                <ul>
+                    <li>该事物具备了与最主要功能特性极度不合的成分 印象中基本屬性≠看到事物最主要特性</li>
+                    <li>距离感</li>
+                    <li>对身边每日接触到的事物产生各方面的疲劳感，这样的疲劳感虽然不会直接的带来“廉价”这个感觉。但是一旦出现了一个基本功能属性与之完全一致的产品时，我们会因为对旧事物的疲劳感，而产生“廉价”的感觉。</li>
+                </ul>
+                <p>造成廉价原因总结： 用没用料，决定了是否便宜；用没用心，决定了是否廉价；</p>
+            </div>
+        </div>
+
+        <div class="daily clearfix">
+            <div class="article date-20170120">
+                <div class="article_img date-20170120">
+                    <img src="https://s-media-cache-ak0.pinimg.com/564x/b3/dc/49/b3dc49dd44b05b482e702f2290d8c63c.jpg" alt="">
+                </div>
+                <h2>設計構圖</h2>
+                <h3>2017-01-20</h3>
+                <p>構圖作用：為了加強視覺的張力、增加設計的趣味性，吸引并引導觀者的注意力。
+                    <p>視覺焦點</p>
+                    <p>不同視角構圖：</p>
+                    <ol>
+                        <li>平行-->常見/平靜，無聊、單調、習以為常</li>
+                        <li>俯視-->廣闊/渺小/強大威嚴，注重元素擺放位置、組合的形狀，常見視角俯視、以高視角俯視地面</li>
+                        <li>仰視-->高大/積極向上，以比人小的視角去觀看物體</li>
+                        <li>第一視角-->帶入其中</li>
+                        <li>傾斜構圖-->打破平衡感、穩定感</li>
+                        <li>近距離視覺-->注意力集中在視覺主題對象，減少不必要的干擾</li>
+                        <li>反轉構圖(倒著看)</li>
+                    </ol>
+                    <p>違背常規視覺的對象在畫面當中就可以匯成視覺焦點，吸引眼球。</p>
+                    <p>設計師要有勇氣去打破常規，而不是強調還原真實。人看到的東西都會不自視的存在記憶當中，而使用常見的視覺構圖方法則無法滿足人的好奇心。</p>
+            </div>
+        </div>
+
+        <div class="daily clearfix">
+            <div class="article date-20170120">
+                <div class="article_img date-20170120"></div>
+                <h2>Git_版本控制</h2>
+                <h3>2017-01-20</h3>
+                <ul>
+                    <li>window+R cmd cd Desktop 進入子資料夾</li>
+                    <li>cd.. 回父資料夾</li>
+                    <li>cd/ 回根資料夾</li>
+                    <li>dir 顯示所有資料</li>
+                    <li>git init 資料初始化</li>
+                    <li>git status 檢查狀態，紅色代表還沒上傳集結區，綠色代表已上傳</li>
+                    <li>git add .全部加入集結區</li>
+                    <li>git commit -m "版本號（內容隨意）"</li>
+                    <li>git remote add origin （貼上鏈接），連結遠端</li>
+                    <li>git push origin master 資料推入雲端</li>
+                    <li>git clone（貼上鏈接），下載版本</li>
+                    <li>git pull，拉下雲端（本地和雲端不一致時用）</li>
+                    <li>git log，查看歷史版本</li>
+                    <li>git reset --hard （版本號前6碼），檔案恢復</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
